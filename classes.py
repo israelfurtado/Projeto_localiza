@@ -1,4 +1,4 @@
-class Veiculo():
+class Veiculo:
     def __init__(self, placa, modelo, ano, cor, valorDiaria):
         self.placa = placa
         self.modelo = modelo
@@ -7,10 +7,19 @@ class Veiculo():
         self.valorDiaria = valorDiaria
 
 class Esportivo(Veiculo):
-    def __init__(self, velocidade):
+    def __init__(self, velocidade, listaMelhorias):
         self.velocidade = velocidade
+        self.listaMelhorias = listaMelhorias
 
-        Veiculo().__init__(self, placa, modelo, ano, cor, valorDiaria)
+        super().__init__(self, placa, modelo, ano, cor, valorDiaria)
+
+class Utilitario(Veiculo):
+    def __init__(self, qtdPassageiros, tamBagageiro, rendimento):
+        self.qtdPassageiros = qtdPassageiros
+        self.tamBagageiro = tamBagageiro
+        self.rendimento = rendimento
+
+        super().__init__(self, placa, modelo, ano, cor, valorDiaria)
 
 class Reserva:
     def __init__(self, codigo, dataInicio, dataFim):
@@ -19,24 +28,34 @@ class Reserva:
         self.dataFim = dataFim
 
 class Pessoa():
-    def __init__(self, nome, endereco):
+    def __init__(self, nome, cpf, idade, endereco, telefone, email):
         self.nome = nome
-        self.endereco = endereco
-
-class Cliente(Pessoa):
-    def __init__(self, id):
-        self.id = id
-
-    Pessoa(). __init__(self, nome, endereco)
-
-class Funcionario(Pessoa):
-    def __init__(self, cpf, idade, dataContratacao, salario, qtdAluguel, status):
         self.cpf = cpf
         self.idade = idade
+        self.endereco = endereco
+        self.telefone = telefone
+        self.email = email
+
+class Cliente(Pessoa):
+    def __init__(self, id, numCnh, foto, anoValidadeCnh):
+        self.id = id
+        self.numCnh = numCnh
+        self.foto = foto
+        self.anoValidadeCnh = anoValidadeCnh
+
+    Pessoa(). __init__(self, nome, cpf, idade, endereco, telefone, email)
+
+class Funcionario(Pessoa):
+    def __init__(self, dataContratacao, salario, qtdAluguel, status):
         self.dataContratacao = dataContratacao
         self.salario = salario
         self.qtdAluguel = qtdAluguel
         self.status = status
 
-    Pessoa(). __init__(self, nome, endereco)
+    Pessoa(). __init__(self, nome, cpf, idade, endereco, telefone, email)
     
+class Promocao:
+    def __init__(self, titulo, descricao, dt_validade):
+        self.titulo = titulo
+        self.descricao = descricao
+        self.dt_validade = dt_validade
